@@ -78,6 +78,7 @@ class Twitter():
         r = self._request(url, params, method="POST").json()
         return r
 
+    
     def getRateLimit(self, resources):
 
         url = self.base_url + '/application/rate_limit_status.json'
