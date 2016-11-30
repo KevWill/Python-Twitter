@@ -11,7 +11,6 @@ setup(name='Python-Twitter',
       classifiers=['Programming Language :: Python :: 3',
                    'Programming Language :: Python :: 3.4',
                    'Programming Language :: Python :: 3.5',],
-      url = 'https://github.com/KevWill/Python-Twitter',
       download_url = 'https://github.com/KevWill/Python-Twitter',
       keywords = ['twitter'],
      )
