@@ -1,7 +1,6 @@
-import twitter
 import requests
 from requests_oauthlib import OAuth1
-from urlparse import parse_qs
+from urllib.parse import parse_qs
 import os
 
 class Twitter():
@@ -9,8 +8,6 @@ class Twitter():
     def __init__(self):
 
         self.config = {}
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
-        execfile(os.path.join(self.script_dir, 'twitter_config.py'), self.config)
         self.oauth = OAuth1(self.config['consumer_key'],
                        self.config['consumer_secret'],
                        self.config['access_token'],
@@ -20,7 +17,7 @@ class Twitter():
         self.base_url = 'https://api.twitter.com/1.1'
 
 
-    def changeAuth(self, consumer_key, consumer_secret, access_token, acces_secret):
+    def setAuth(self, consumer_key, consumer_secret, access_token, acces_secret):
 
         self.oauth = OAuth1(consumer_key, consumer_secret, access_token, acces_secret)
 
@@ -78,7 +75,6 @@ class Twitter():
         r = self._request(url, params, method="POST").json()
         return r
 
-    
     def getRateLimit(self, resources):
 
         url = self.base_url + '/application/rate_limit_status.json'
