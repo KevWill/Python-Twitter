@@ -11,5 +11,6 @@ setup(name='Python-Twitter',
                    'Programming Language :: Python :: 3.5',],
       url = 'https://github.com/KevWill/Python-Twitter',
       download_url = 'https://github.com/KevWill/Python-Twitter',
+      packages = ['python_twitter'],
       keywords = ['twitter'],
      )
