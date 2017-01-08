@@ -1,1 +1,1 @@
-from twitterapi import Twitter
+from python_twitter.twitterapi import Twitter

@@ -2,6 +2,7 @@ import requests
 from requests_oauthlib import OAuth1
 from urllib.parse import parse_qs
 import os
+
 class Twitter():
 
     def __init__(self, config):
