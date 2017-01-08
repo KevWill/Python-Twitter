@@ -4,13 +4,17 @@ from urllib.parse import parse_qs
 import os
 class Twitter():
 
-    def __init__(self):
+    def __init__(self, config):
 
-        self.config = {}
-        self.oauth = OAuth1(self.config['consumer_key'],
-                       self.config['consumer_secret'],
-                       self.config['access_token'],
-                       self.config['access_secret']
+        """
+        Config is a dict containing: consumer_key; consumer_secret;
+                                     access_token; access_secret
+        """
+
+        self.oauth = OAuth1(config['consumer_key'],
+                       config['consumer_secret'],
+                       config['access_token'],
+                       config['access_secret']
                        )
 
         self.base_url = 'https://api.twitter.com/1.1'
