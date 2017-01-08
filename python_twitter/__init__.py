@@ -1,1 +1,1 @@
-from Resources.twitterapi import Twitter
+from twitterapi import Twitter
