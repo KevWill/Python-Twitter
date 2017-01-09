@@ -53,7 +53,7 @@ class Twitter():
                 params = {'id': ','.join(users)}
             else:
                 params = {'screen_name': ','.join(users)}
-        elif isinstance(users, basestring):
+        elif isinstance(users, str):
             params = {'screen_name': users}
         elif isinstance(users, int):
             params = {'id': users}
@@ -67,7 +67,7 @@ class Twitter():
     def followUser(self, user):
 
         url = self.base_url + '/friendships/create.json'
-        if isinstance(user, basestring):
+        if isinstance(user, str):
             params = {'screen_name': user}
         elif isinstance(user, int):
             params = {'id': user}
@@ -82,7 +82,7 @@ class Twitter():
         url = self.base_url + '/application/rate_limit_status.json'
         if isinstance(resources, list):
             params = {'resources': ','.join(resources)}
-        elif isinstance(resources, basestring):
+        elif isinstance(resources, str):
             params = {'resources': resources}
         else:
             raise TypeError("Resources should be list or string, not {}.".format(str(type(resources))))
@@ -90,6 +90,14 @@ class Twitter():
         r = self._request(url, params).json()
         return r['resources']
 
+    def createChunks(self, l, n):
+        """
+        :param l: array
+        :param n: size of every chunk
+        :return: chunks of l of size n
+        """
+        for i in range(0, len(l), n):
+            yield l[i:i+n]
 
     def _request(self, url, params, method='GET'):
 
