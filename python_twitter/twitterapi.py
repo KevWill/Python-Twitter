@@ -49,18 +49,21 @@ class Twitter():
 
         url = self.base_url + '/users/lookup.json'
         if isinstance(users, list):
+            method = 'POST'
             if isinstance(users[0], int):
                 params = {'id': ','.join(users)}
             else:
                 params = {'screen_name': ','.join(users)}
         elif isinstance(users, str):
+            method = 'GET'
             params = {'screen_name': users}
         elif isinstance(users, int):
+            method = 'GET'
             params = {'id': users}
         else:
             raise TypeError("Users should be list, string or int, not {}.".format(str(type(users))))
 
-        r = self._request(url, params).json()
+        r = self._request(url, params, method).json()
         return r
 
 
