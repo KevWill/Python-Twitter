@@ -19,11 +19,11 @@ class Twitter():
         self.base_url = 'https://api.twitter.com/1.1'
 
 
-    def setAuth(self, consumer_key, consumer_secret, access_token, acces_secret):
+    def set_auth(self, consumer_key, consumer_secret, access_token, acces_secret):
 
         self.oauth = OAuth1(consumer_key, consumer_secret, access_token, acces_secret)
 
-    def showFriendship(self, source, target):
+    def show_friendship(self, source, target):
 
         url = self.base_url + '/friendships/show.json'
         params = {'source_screen_name': source,
@@ -34,7 +34,7 @@ class Twitter():
                 'followed': friendship['relationship']['source']['followed_by']}
 
 
-    def getFollowers(self, user, cursor = -1, count = 5000):
+    def get_followers(self, user, cursor = -1, count = 5000):
 
         url = self.base_url + '/followers/ids.json'
         params = {'cursor': cursor,
@@ -45,7 +45,7 @@ class Twitter():
         return user_ids
 
 
-    def getUserInfo(self, users):
+    def get_user_info(self, users):
 
         url = self.base_url + '/users/lookup.json'
         if isinstance(users, list):
@@ -67,7 +67,7 @@ class Twitter():
         return r
 
 
-    def followUser(self, user):
+    def follow_user(self, user):
 
         url = self.base_url + '/friendships/create.json'
         if isinstance(user, str):
@@ -80,7 +80,7 @@ class Twitter():
         r = self._request(url, params, method="POST").json()
         return r
 
-    def getRateLimit(self, resources):
+    def get_rate_limit(self, resources):
 
         url = self.base_url + '/application/rate_limit_status.json'
         if isinstance(resources, list):
@@ -93,7 +93,7 @@ class Twitter():
         r = self._request(url, params).json()
         return r['resources']
 
-    def createChunks(self, l, n):
+    def create_chunks(self, l, n):
         """
         :param l: array
         :param n: size of every chunk
